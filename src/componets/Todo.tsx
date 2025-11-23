@@ -1,13 +1,14 @@
 import classes from 'classnames'
 import { Task } from '../types';
+import { observer } from "mobx-react-lite";
 
 interface TodoProps extends Task {
-  removeTodo: (id: number) => void;
-  editTodo: (id: number) => void;
-  toggleTask: (id: number) => void;
+	removeTodo: (id: number) => void;
+	editTodo: (id: number) => void;
+	toggleTask: (id: number) => void;
 }
 
-export const Todo = ({ value, removeTodo, id, editTodo, toggleTask, completed }: TodoProps) => {
+export const Todo = observer(({ value, removeTodo, id, editTodo, toggleTask, completed }: TodoProps) => {
 
 	const isEditable = !completed
 
@@ -34,4 +35,4 @@ export const Todo = ({ value, removeTodo, id, editTodo, toggleTask, completed }:
 		</li>
 
 	)
-}
+})

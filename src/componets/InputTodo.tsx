@@ -6,7 +6,7 @@ interface InputTodoProps {
 
 export const InputTodo = ({ addValue }: InputTodoProps) => {
 
-	const [value, setValue] = useState < string > ('')
+	const [value, setValue] = useState<string>('')
 
 	const handleAddTodo = () => {
 		if (!value.trim()) return;

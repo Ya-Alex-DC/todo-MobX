@@ -1,5 +1,6 @@
 import { Todo } from "./Todo"
 import { Task } from '../types';
+import { observer } from "mobx-react-lite";
 
 interface ListTodoProps {
 	tasks: Task[];
@@ -8,20 +9,20 @@ interface ListTodoProps {
 	toggleTask: (id: number) => void;
 }
 
-
-export const ListTodo = ({ tasks, removeTodo, editTodo, toggleTask }: ListTodoProps) => {
+export const ListTodo = observer(({ tasks, removeTodo, editTodo, toggleTask }: ListTodoProps) => {
 
 	return (
 		<div className="list">
 			<ul className="list_todo">
-				{tasks.map(e => <Todo
-					key={e.id}
-					{...e}
-					removeTodo={(e) => removeTodo(e)}
-					editTodo={editTodo}
-					toggleTask={toggleTask}
-				/>)}
+				{tasks.map(e =>
+					<Todo
+						key={e.id}
+						{...e}
+						removeTodo={removeTodo}
+						editTodo={editTodo}
+						toggleTask={toggleTask}
+					/>)}
 			</ul>
 		</div>
 	)
-}
+})
